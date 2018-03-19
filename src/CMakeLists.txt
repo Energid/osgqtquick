@@ -8,6 +8,11 @@ endforeach()
 list(APPEND CMAKE_MODULE_PATH "${osgQtQuick_ROOT_DIR}/cmake")
 
 # OpenSceneGraph
+if(EC_EXT_osg_LICENSE_INFO)
+    list(GET EC_EXT_osg_LICENSE_INFO -1 OSG_LIC_FILE)
+    get_filename_component(OSG_DIR ${OSG_LIC_FILE} DIRECTORY)
+endif(EC_EXT_osg_LICENSE_INFO)
+
 find_package(OpenSceneGraph 3.0 REQUIRED
   osg
   osgDB
@@ -23,6 +28,10 @@ if(osgQtQuick_WITH_OSGQT)
 endif()
 
 # Qt
+if(EC_EXT_Qt5Quick_LIB_RELEASE)
+   get_filename_component(EC_EXT_Qt5Quick_LIB_DIR ${EC_EXT_Qt5Quick_LIB_RELEASE} DIRECTORY)
+   list(APPEND CMAKE_PREFIX_PATH "${EC_EXT_Qt5Quick_LIB_DIR}/cmake")
+endif(EC_EXT_Qt5Quick_LIB_RELEASE)
 if(osgQtQuick_WITH_QT_PRIVATE)
   find_package(Qt5Quick CONFIG REQUIRED
     COMPONENTS Private)
