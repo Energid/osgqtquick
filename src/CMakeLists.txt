@@ -1,9 +1,11 @@
 # New policies
-foreach(policy CMP0020 CMP0022 CMP0043)
-  if(POLICY ${policy})
-      cmake_policy(SET ${policy} NEW)
-  endif()
-endforeach()
+if(NOT OSGQTQUICK_ACTIN_BUILD)
+   foreach(policy CMP0020 CMP0022 CMP0043)
+     if(POLICY ${policy})
+         cmake_policy(SET ${policy} NEW)
+     endif()
+   endforeach()
+endif(NOT OSGQTQUICK_ACTIN_BUILD)
 
 list(APPEND CMAKE_MODULE_PATH "${osgQtQuick_ROOT_DIR}/cmake")
 
@@ -44,6 +46,11 @@ if(osgQtQuick_WITH_EARTH)
 endif()
 
 include(GNUInstallDirs)
+
+if(OSGQTQUICK_ACTIN_BUILD AND NOT DEFINED CMAKE_INSTALL_QMLDIR)
+   set(CMAKE_INSTALL_QMLDIR "bin/qml"
+     CACHE STRING "qml modules")
+endif(OSGQTQUICK_ACTIN_BUILD AND NOT DEFINED CMAKE_INSTALL_QMLDIR)
 
 if(NOT DEFINED CMAKE_INSTALL_QMLDIR)
   if(NOT EXISTS "${QMAKE_EXECUTABLE}")
