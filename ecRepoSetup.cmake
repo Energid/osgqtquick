@@ -6,5 +6,5 @@ if (NOT EC_EMBEDDED)
 endif (NOT EC_EMBEDDED)
 
 if(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
-   set(OSGQTQUICK_ACTIN_BUILD TRUE INTERNAL)
+   set(OSGQTQUICK_ACTIN_BUILD TRUE CACHE INTERNAL "Flag indicating whether OsgQtQuick is being built as Actin dependency")
 endif(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")

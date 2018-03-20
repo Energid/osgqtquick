@@ -1,11 +1,11 @@
 # New policies
-if(NOT OSGQTQUICK_ACTIN_BUILD)
+if(NOT DEFINED OSGQTQUICK_ACTIN_BUILD)
    foreach(policy CMP0020 CMP0022 CMP0043)
      if(POLICY ${policy})
          cmake_policy(SET ${policy} NEW)
      endif()
    endforeach()
-endif(NOT OSGQTQUICK_ACTIN_BUILD)
+endif(NOT DEFINED OSGQTQUICK_ACTIN_BUILD)
 
 list(APPEND CMAKE_MODULE_PATH "${osgQtQuick_ROOT_DIR}/cmake")
 

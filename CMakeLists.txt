@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 2.8)
 if(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
    ecRepository(osgqtquick)
+else(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
+   cmake_minimum_required(VERSION 2.8)
 endif(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
 
 project(osgQtQuick CXX)
