@@ -1,13 +1,19 @@
 # New policies
-foreach(policy CMP0020 CMP0022 CMP0043)
-  if(POLICY ${policy})
-      cmake_policy(SET ${policy} NEW)
-  endif()
-endforeach()
+if(NOT DEFINED OSGQTQUICK_ACTIN_BUILD)
+   foreach(policy CMP0020 CMP0022 CMP0043)
+     if(POLICY ${policy})
+         cmake_policy(SET ${policy} NEW)
+     endif()
+   endforeach()
+endif(NOT DEFINED OSGQTQUICK_ACTIN_BUILD)
 
 list(APPEND CMAKE_MODULE_PATH "${osgQtQuick_ROOT_DIR}/cmake")
 
 # OpenSceneGraph
+if(EC_EXT_osg_INC_DIR)
+    get_filename_component(OSG_DIR ${EC_EXT_osg_INC_DIR} DIRECTORY)
+endif(EC_EXT_osg_INC_DIR)
+
 find_package(OpenSceneGraph 3.0 REQUIRED
   osg
   osgDB
@@ -23,6 +29,14 @@ if(osgQtQuick_WITH_OSGQT)
 endif()
 
 # Qt
+if(APPLE)
+   if(EC_EXT_Qt5Quick_INC_DIR)
+      list(APPEND CMAKE_PREFIX_PATH "${EC_EXT_Qt5Quick_INC_DIR}/cmake")
+   endif(EC_EXT_Qt5Quick_INC_DIR)
+elseif(EC_EXT_Qt5Quick_LIB_RELEASE)
+   get_filename_component(EC_EXT_Qt5Quick_LIB_DIR ${EC_EXT_Qt5Quick_LIB_RELEASE} DIRECTORY)
+   list(APPEND CMAKE_PREFIX_PATH "${EC_EXT_Qt5Quick_LIB_DIR}/cmake")
+endif(APPLE)
 if(osgQtQuick_WITH_QT_PRIVATE)
   find_package(Qt5Quick CONFIG REQUIRED
     COMPONENTS Private)
@@ -35,6 +49,11 @@ if(osgQtQuick_WITH_EARTH)
 endif()
 
 include(GNUInstallDirs)
+
+if(OSGQTQUICK_ACTIN_BUILD AND NOT DEFINED CMAKE_INSTALL_QMLDIR)
+   set(CMAKE_INSTALL_QMLDIR "bin/qml"
+     CACHE STRING "qml modules")
+endif(OSGQTQUICK_ACTIN_BUILD AND NOT DEFINED CMAKE_INSTALL_QMLDIR)
 
 if(NOT DEFINED CMAKE_INSTALL_QMLDIR)
   if(NOT EXISTS "${QMAKE_EXECUTABLE}")

@@ -1,11 +1,16 @@
-cmake_minimum_required(VERSION 2.8)
+if(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
+   cmake_policy(SET CMP0043 OLD)
+   ecRepository(osgqtquick)
+else(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
+   cmake_minimum_required(VERSION 2.8)
+endif(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
 
 project(osgQtQuick CXX)
 
 set(osgQtQuick_VERSION_MAJOR 2)
 set(osgQtQuick_VERSION_MINOR 0)
-set(osgQtQuick_VERSION_PATCH 0)
-set(osgQtQuick_VERSION_TWEAK 8)
+set(osgQtQuick_VERSION_PATCH 1) # Energid internal build system compatibility updates
+set(osgQtQuick_VERSION_TWEAK 0)
 
 set(osgQtQuick_BUILD_IMPORTS ON
   CACHE BOOL "Set to ON to build plugins for imported modules (By default is ON)")
@@ -13,7 +18,7 @@ set(osgQtQuick_BUILD_IMPORTS ON
 set(osgQtQuick_BUILD_DOCS OFF
   CACHE BOOL "Set to ON to build reference documentation (By default is OFF)")
 
-set(osgQtQuick_BUILD_DEBUGGER OFF
+set(osgQtQuick_BUILD_DEBUGGER ON
   CACHE BOOL "Set to ON to build debugger application (By default is OFF)")
 
 set(osgQtQuick_WITH_OSGQT ON

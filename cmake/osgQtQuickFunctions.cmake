@@ -37,6 +37,16 @@ function(osgqtquick_imported_module module_name)
   set_property(TARGET ${target_name} PROPERTY
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}")
 
+  if(OSGQTQUICK_ACTIN_BUILD)
+    set_target_properties(${target_name} PROPERTIES
+      RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}"
+      LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}"
+      RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}"
+      LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}"
+      RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}"
+      LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}")
+  endif(OSGQTQUICK_ACTIN_BUILD)
+
   if(MINGW)
     set_target_properties(${target_name} PROPERTIES PREFIX "")
   endif()
