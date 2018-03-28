@@ -12,9 +12,6 @@ list(APPEND CMAKE_MODULE_PATH "${osgQtQuick_ROOT_DIR}/cmake")
 # OpenSceneGraph
 if(EC_EXT_osg_INC_DIR)
     get_filename_component(OSG_DIR ${EC_EXT_osg_INC_DIR} DIRECTORY)
-    if(NOT APPLE)
-       get_filename_component(OSG_DIR ${OSG_DIR} DIRECTORY)
-    endif(NOT APPLE)
 endif(EC_EXT_osg_INC_DIR)
 
 find_package(OpenSceneGraph 3.0 REQUIRED
