@@ -1,5 +1,7 @@
 if(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
-   cmake_policy(SET CMP0043 OLD)
+   if(NOT CMAKE_VERSION VERSION_LESS "3.0")
+      cmake_policy(SET CMP0043 OLD)
+   endif(NOT CMAKE_VERSION VERSION_LESS "3.0")
    ecRepository(osgqtquick)
 else(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
    cmake_minimum_required(VERSION 2.8)
