@@ -65,8 +65,13 @@ function(osgqtquick_imported_module module_name)
   install(FILES
     "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}/qmldir"
     DESTINATION "${CMAKE_INSTALL_QMLDIR}/${module_name}")
+  install(FILES
+    "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_QMLDIR}/${module_name}/qmldir"
+    DESTINATION "${CMAKE_INSTALL_QMLDIR}/${module_name}" COMPONENT ${PROJECT_NAME}-rt)
 
   install(TARGETS ${target_name}
     LIBRARY DESTINATION "${CMAKE_INSTALL_QMLDIR}/${module_name}")
+  install(TARGETS ${target_name}
+    LIBRARY DESTINATION "${CMAKE_INSTALL_QMLDIR}/${module_name}" COMPONENT ${PROJECT_NAME}-rt)
 
 endfunction()

@@ -1,3 +1,7 @@
+if(DEFINED OSGQTQUICK_ACTIN_BUILD)
+    ecProject(osgQtQml)
+endif()
+
 if(DYNAMIC_OSGQTQUICK)
     add_definitions(-DOSGQTQML_LIBRARY)
 else()
@@ -16,10 +20,22 @@ macro(META_Node _library _class)
     CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp\"\n")
   install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
     DESTINATION "include/${_library}" RENAME "${_class}QtQml")
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQml" COMPONENT ${PROJECT_NAME}-hdr)
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQml" COMPONENT ${PROJECT_NAME}-lib)
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQml" COMPONENT ${PROJECT_NAME}-src)
   file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/${_library}/${_class}QtQmlIndex"
     CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp\"\n")
   install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp"
     DESTINATION "include/${_library}" RENAME "${_class}QtQmlIndex")
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQmlIndex" COMPONENT ${PROJECT_NAME}-hdr)
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQmlIndex" COMPONENT ${PROJECT_NAME}-lib)
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQmlIndex" COMPONENT ${PROJECT_NAME}-src)
   list(APPEND _srcs "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.cpp")
   list(APPEND _moc_hdrs "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp")
 endmacro(META_Node)
@@ -176,58 +192,118 @@ file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQtQml/Export"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/export.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/export.hpp"
   DESTINATION "include/osgQtQml" RENAME "Export")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/export.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Export" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/export.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Export" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/export.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Export" COMPONENT ${PROJECT_NAME}-src)
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQtQml/Index"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/index.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/index.hpp"
   DESTINATION "include/osgQtQml" RENAME "Index")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/index.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Index" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/index.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Index" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/index.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Index" COMPONENT ${PROJECT_NAME}-src)
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQtQml/Object"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/object.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/object.hpp"
   DESTINATION "include/osgQtQml" RENAME "Object")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/object.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Object" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/object.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Object" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/object.hpp"
+  DESTINATION "include/osgQtQml" RENAME "Object" COMPONENT ${PROJECT_NAME}-src)
 
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osg/ModuleQtQml"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osg/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osg/module.hpp"
   DESTINATION "include/osg" RENAME "ModuleQtQml")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osg/module.hpp"
+  DESTINATION "include/osg" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osg/module.hpp"
+  DESTINATION "include/osg" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osg/module.hpp"
+  DESTINATION "include/osg" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgDB/ModuleQtQml"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgdb/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgdb/module.hpp"
   DESTINATION "include/osgDB" RENAME "ModuleQtQml")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgdb/module.hpp"
+  DESTINATION "include/osgDB" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgdb/module.hpp"
+  DESTINATION "include/osgDB" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgdb/module.hpp"
+  DESTINATION "include/osgDB" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgGA/ModuleQtQml"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgga/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgga/module.hpp"
   DESTINATION "include/osgGA" RENAME "ModuleQtQml")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgga/module.hpp"
+  DESTINATION "include/osgGA" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgga/module.hpp"
+  DESTINATION "include/osgGA" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgga/module.hpp"
+  DESTINATION "include/osgGA" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgManipulator/ModuleQtQml"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgmanipulator/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgmanipulator/module.hpp"
   DESTINATION "include/osgManipulator" RENAME "ModuleQtQml")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgmanipulator/module.hpp"
+  DESTINATION "include/osgManipulator" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgmanipulator/module.hpp"
+  DESTINATION "include/osgManipulator" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgmanipulator/module.hpp"
+  DESTINATION "include/osgManipulator" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgText/ModuleQtQml"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgtext/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgtext/module.hpp"
   DESTINATION "include/osgText" RENAME "ModuleQtQml")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgtext/module.hpp"
+  DESTINATION "include/osgText" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgtext/module.hpp"
+  DESTINATION "include/osgText" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgtext/module.hpp"
+  DESTINATION "include/osgText" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQt/ModuleQtQml"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgqt/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgqt/module.hpp"
   DESTINATION "include/osgQt" RENAME "ModuleQtQml")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgqt/module.hpp"
+  DESTINATION "include/osgQt" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgqt/module.hpp"
+  DESTINATION "include/osgQt" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgqt/module.hpp"
+  DESTINATION "include/osgQt" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgViewer/ModuleQtQml"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp"
   DESTINATION "include/osgViewer" RENAME "ModuleQtQml")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp"
+  DESTINATION "include/osgViewer" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp"
+  DESTINATION "include/osgViewer" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp"
+  DESTINATION "include/osgViewer" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
 if(osgQtQuick_WITH_EARTH)
@@ -236,6 +312,12 @@ file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgEarthUtil/ModuleQtQml"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgearthutil/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgearthutil/module.hpp"
   DESTINATION "include/osgEarthUtil" RENAME "ModuleQtQml")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgearthutil/module.hpp"
+  DESTINATION "include/osgEarthUtil" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgearthutil/module.hpp"
+  DESTINATION "include/osgEarthUtil" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgearthutil/module.hpp"
+  DESTINATION "include/osgEarthUtil" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 META_Node(osgEarthUtil EarthManipulator)
 
@@ -248,3 +330,8 @@ install(TARGETS osgQtQml EXPORT osgQtQuick
   RUNTIME DESTINATION "bin"
   ARCHIVE DESTINATION "lib"
   LIBRARY DESTINATION "lib")
+
+if(DEFINED OSGQTQUICK_ACTIN_BUILD)
+   ecPackageLibrary(osgQtQml osgQtQml)
+endif()
+

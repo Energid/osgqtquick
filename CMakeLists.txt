@@ -49,16 +49,34 @@ configure_file("${CMAKE_CURRENT_LIST_DIR}/cmake/version.hpp.in"
     "${CMAKE_BINARY_DIR}/include/osgQtQuick/Version" @ONLY)
 install(FILES "${CMAKE_BINARY_DIR}/include/osgQtQuick/Version"
   DESTINATION "include/osgQtQuick")
+install(FILES "${CMAKE_BINARY_DIR}/include/osgQtQuick/Version"
+  DESTINATION "include/osgQtQuick" COMPONENT osgqtquick-src)
+install(FILES "${CMAKE_BINARY_DIR}/include/osgQtQuick/Version"
+  DESTINATION "include/osgQtQuick" COMPONENT osgqtquick-hdr)
+install(FILES "${CMAKE_BINARY_DIR}/include/osgQtQuick/Version"
+  DESTINATION "include/osgQtQuick" COMPONENT osgqtquick-lib)
 
 configure_file("${CMAKE_CURRENT_LIST_DIR}/cmake/osgQtQuickConfig.cmake.in"
     "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfig.cmake" @ONLY)
 install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfig.cmake"
   DESTINATION "lib/cmake/osgQtQuick")
+install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfig.cmake"
+  DESTINATION "lib/cmake/osgQtQuick" COMPONENT osgqtquick-src)
+install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfig.cmake"
+  DESTINATION "lib/cmake/osgQtQuick" COMPONENT osgqtquick-hdr)
+install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfig.cmake"
+  DESTINATION "lib/cmake/osgQtQuick" COMPONENT osgqtquick-lib)
 
 configure_file("${CMAKE_CURRENT_LIST_DIR}/cmake/osgQtQuickConfigVersion.cmake.in"
     "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfigVersion.cmake" @ONLY)
 install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfigVersion.cmake"
   DESTINATION "lib/cmake/osgQtQuick")
+install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfigVersion.cmake"
+  DESTINATION "lib/cmake/osgQtQuick" COMPONENT osgqtquick-hdr)
+install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfigVersion.cmake"
+  DESTINATION "lib/cmake/osgQtQuick" COMPONENT osgqtquick-src)
+install(FILES "${CMAKE_BINARY_DIR}/lib/cmake/osgQtQuick/osgQtQuickConfigVersion.cmake"
+  DESTINATION "lib/cmake/osgQtQuick" COMPONENT osgqtquick-lib)
 
 include_directories("${CMAKE_BINARY_DIR}/include")
 

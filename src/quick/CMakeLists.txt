@@ -1,3 +1,7 @@
+if(DEFINED OSGQTQUICK_ACTIN_BUILD)
+    ecProject(osgQtQuick)
+endif()
+
 if(DYNAMIC_OSGQTQUICK)
     add_definitions(-DOSGQTQUICK_LIBRARY)
 else()
@@ -20,10 +24,22 @@ macro(META_Node _library _class)
     CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp\"\n")
   install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
     DESTINATION "include/${_library}" RENAME "${_class}QtQuick")
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQuick" COMPONENT ${PROJECT_NAME}-hdr)
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQuick" COMPONENT ${PROJECT_NAME}-lib)
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQuick" COMPONENT ${PROJECT_NAME}-src)
   file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/${_library}/${_class}QtQuickIndex"
     CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp\"\n")
   install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp"
     DESTINATION "include/${_library}" RENAME "${_class}QtQuickIndex")
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQuickIndex" COMPONENT ${PROJECT_NAME}-hdr)
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQuickIndex" COMPONENT ${PROJECT_NAME}-lib)
+  install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}index.hpp"
+    DESTINATION "include/${_library}" RENAME "${_class}QtQuickIndex" COMPONENT ${PROJECT_NAME}-src)
   list(APPEND _srcs "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.cpp")
   list(APPEND _moc_hdrs "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp")
 endmacro(META_Node)
@@ -73,31 +89,67 @@ file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQtQuick/Export"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/export.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/export.hpp"
   DESTINATION "include/osgQtQuick" RENAME "Export")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/export.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Export" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/export.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Export" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/export.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Export" COMPONENT ${PROJECT_NAME}-src)
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQtQuick/Index"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/index.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/index.hpp"
   DESTINATION "include/osgQtQuick" RENAME "Index")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/index.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Index" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/index.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Index" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/index.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Index" COMPONENT ${PROJECT_NAME}-src)
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQtQuick/Object"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/object.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/object.hpp"
   DESTINATION "include/osgQtQuick" RENAME "Object")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/object.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Object" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/object.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Object" COMPONENT ${PROJECT_NAME}-lib)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/object.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Object" COMPONENT ${PROJECT_NAME}-src)
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQtQuick/RenderThread"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/renderthread.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/renderthread.hpp"
   DESTINATION "include/osgQtQuick" RENAME "RenderThread")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/renderthread.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "RenderThread" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/renderthread.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "RenderThread" COMPONENT ${PROJECT_NAME}-src)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/renderthread.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "RenderThread" COMPONENT ${PROJECT_NAME}-lib)
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgQtQuick/Window"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/window.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/window.hpp"
   DESTINATION "include/osgQtQuick" RENAME "Window")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/window.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Window" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/window.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Window" COMPONENT ${PROJECT_NAME}-src)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/window.hpp"
+  DESTINATION "include/osgQtQuick" RENAME "Window" COMPONENT ${PROJECT_NAME}-lib)
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgViewer/ModuleQtQuick"
   CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp\"\n")
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp"
   DESTINATION "include/osgViewer" RENAME "ModuleQtQuick")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp"
+  DESTINATION "include/osgViewer" RENAME "ModuleQtQuick" COMPONENT ${PROJECT_NAME}-hdr)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp"
+  DESTINATION "include/osgViewer" RENAME "ModuleQtQuick" COMPONENT ${PROJECT_NAME}-src)
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgviewer/module.hpp"
+  DESTINATION "include/osgViewer" RENAME "ModuleQtQuick" COMPONENT ${PROJECT_NAME}-lib)
 
 set_target_properties(osgQtQuick PROPERTIES
   INTERFACE_LINK_LIBRARIES "osgQtQml")
@@ -106,3 +158,7 @@ install(TARGETS osgQtQuick EXPORT osgQtQuick
   RUNTIME DESTINATION "bin"
   ARCHIVE DESTINATION "lib"
   LIBRARY DESTINATION "lib")
+
+if(DEFINED OSGQTQUICK_ACTIN_BUILD)
+   ecPackageLibrary(osgQtQuick osgQtQuick)
+endif()
