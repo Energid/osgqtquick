@@ -1,3 +1,7 @@
+if(DEFINED OSGQTQUICK_ACTIN_BUILD)
+    ecProject(osgQtQuickDebugger)
+endif()
+
 set(osgQtQuick_DEBUGGED_SCRIPT "view.qml"
   CACHE STRING "Debugged qml script")
 

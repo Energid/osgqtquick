@@ -73,6 +73,10 @@ endif()
 
 include(osgQtQuickFunctions)
 
+if(DEFINED OSGQTQUICK_ACTIN_BUILD)
+    ecSolution(osgqtquick)
+endif()
+
 include_directories(
   "${CMAKE_BINARY_DIR}/include"
   ${OPENSCENEGRAPH_INCLUDE_DIRS}
@@ -94,3 +98,12 @@ endif()
 install(EXPORT osgQtQuick
   DESTINATION "lib/cmake/osgQtQuick"
   FILE osgQtQuickTargets.cmake)
+install(EXPORT osgQtQuick
+  DESTINATION "lib/cmake/osgQtQuick"
+  FILE osgQtQuickTargets.cmake COMPONENT osgqtquick-lib)
+install(EXPORT osgQtQuick
+  DESTINATION "lib/cmake/osgQtQuick"
+  FILE osgQtQuickTargets.cmake COMPONENT osgqtquick-src)
+install(EXPORT osgQtQuick
+  DESTINATION "lib/cmake/osgQtQuick"
+  FILE osgQtQuickTargets.cmake COMPONENT osgqtquick-hdr)
