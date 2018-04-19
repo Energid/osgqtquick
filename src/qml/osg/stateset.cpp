@@ -1,6 +1,8 @@
 #include "stateset.hpp"
 #include "statesetindex.hpp"
 
+#include "stateattribute.hpp"
+
 #include <osgQtQml/Index>
 
 #include <osg/StateSet>
@@ -76,6 +78,21 @@ StateSetQtQml *StateSetQtQml::fromStateSet(StateSet *stateSet, QObject *parent)
     result->classBegin();
 
     return result;
+}
+
+void StateSetQtQml::setMode(unsigned int mode, unsigned int modeValue)
+{
+    o(this)->setMode(mode, modeValue);
+}
+
+void StateSetQtQml::setTextureMode(unsigned int unit, unsigned int mode, unsigned int modeValue)
+{
+    o(this)->setTextureMode(unit, mode, modeValue);
+}
+
+void StateSetQtQml::setAttributeAndModes(osg::StateAttributeQtQml *pAttribute, unsigned int modeValue)
+{
+    o(this)->setAttributeAndModes(pAttribute->StateAttribute(), modeValue);
 }
 
 }

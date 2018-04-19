@@ -6,6 +6,7 @@
 namespace osg {
 
 class StateSet;
+class StateAttributeQtQml;
 
 class OSGQTQML_EXPORT StateSetQtQml : public osg::ObjectQtQml
 {
@@ -20,6 +21,11 @@ public:
   void classBegin();
 
   Q_INVOKABLE void setGlobalDefaults();
+
+  Q_INVOKABLE void setMode(unsigned int mode, unsigned int modeValue);
+  Q_INVOKABLE void setTextureMode(unsigned int unit, unsigned int mode, unsigned int modeValue);
+  Q_INVOKABLE void setAttributeAndModes(osg::StateAttributeQtQml *pAttribute, unsigned int modeValue);
+
 
   StateSet* stateSet();
 
