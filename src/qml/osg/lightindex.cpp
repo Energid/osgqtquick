@@ -10,7 +10,7 @@
 
 #include "light.hpp"
 
-
+namespace osg {
 
 //------------------------------------------------------------------------------
 LightQtQml::Index::Index
@@ -31,4 +31,6 @@ void LightQtQml::Index::classBegin
       setO(new osg::Light);
    }
    StateAttributeQtQml::Index::classBegin();
+}
+
 }

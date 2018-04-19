@@ -14,6 +14,7 @@
 
 #include <osg/Light>
 
+namespace osg {
 ///
 /// \brief Index class for API mapping between LightQtQml and osg::Light.
 ///
@@ -40,5 +41,6 @@ public:
 
 };
 
+}
 
 #endif // LightQtQmlIndex_H

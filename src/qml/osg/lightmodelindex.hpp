@@ -16,6 +16,8 @@
 
 #include <osg/LightModel>
 
+namespace osg {
+
 ///
 /// \brief Index class for mapping API between LightModelQtQml and osg::LightModel
 ///
@@ -42,5 +44,6 @@ public:
 
 };
 
+}
 
 #endif // LightModelQtQmlIndex_H

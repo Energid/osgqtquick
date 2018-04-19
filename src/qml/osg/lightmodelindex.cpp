@@ -10,7 +10,7 @@
 
 #include "lightmodel.hpp"
 
-
+namespace osg {
 //------------------------------------------------------------------------------
 LightModelQtQml::Index::Index
    (
@@ -30,4 +30,6 @@ void LightModelQtQml::Index::classBegin
       setO(new osg::LightModel);
    }
    StateAttributeQtQml::Index::classBegin();
+}
+
 }

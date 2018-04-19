@@ -18,6 +18,8 @@
 #include <QtGui/QVector4D>
 #include <QtGui/QVector3D>
 
+namespace osg {
+
 ///
 /// \brief The StateAttributeQtQml class extends the StateAttributeQtQml item/class provided by the
 /// OsgQtQuick framework.
@@ -68,6 +70,6 @@ public Q_SLOTS:
 };
 
 
-
+}
 
 #endif // StateAttributeQtQml_H

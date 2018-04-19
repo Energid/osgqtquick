@@ -11,12 +11,14 @@
 #include "stateattribute.hpp"
 
 
-
+namespace osg {
 //------------------------------------------------------------------------------
 StateAttributeQtQml::Index::Index
    (
    osg::StateAttribute* pStateAttributeObject
    ) : ObjectQtQml::Index(pStateAttributeObject)
 {
+
+}
 
 }

@@ -13,6 +13,8 @@
 #include <osgQtQml/Index>
 #include <osg/StateAttribute>
 
+namespace osg {
+
 //------------------------------------------------------------------------------
 StateAttributeQtQml::StateAttributeQtQml
    (
@@ -42,3 +44,4 @@ osg::StateAttribute* StateAttributeQtQml::StateAttribute
 }
 
 
+}

@@ -12,6 +12,8 @@
 #include <osgQtQml/Index>
 #include <osg/Light>
 
+namespace osg {
+
 //------------------------------------------------------------------------------
 LightQtQml::LightQtQml
    (
@@ -343,3 +345,4 @@ void LightQtQml::setSpotCutoff
 
 }
 
+}

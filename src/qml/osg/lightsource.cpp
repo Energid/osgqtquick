@@ -13,6 +13,8 @@
 
 #include <osg/LightSource>
 
+namespace osg {
+
 //------------------------------------------------------------------------------
 LightSourceQtQml::LightSourceQtQml
    (
@@ -68,7 +70,7 @@ void LightSourceQtQml::setLight
    )
 {
 
-   LightQtQml* pObject = lightObject.value<LightQtQml*>();
+   osg::LightQtQml* pObject = lightObject.value<osg::LightQtQml*>();
    if(pObject)
    {
       if(pObject == m_pLightObject)
@@ -107,4 +109,4 @@ void LightSourceQtQml::setLocalStateSetModes
 
 }
 
-
+}

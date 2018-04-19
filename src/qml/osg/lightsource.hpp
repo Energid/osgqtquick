@@ -15,6 +15,10 @@
 #include <QtGui/QVector3D>
 #include <QtCore/QVariant>
 
+
+
+namespace osg {
+
 class LightQtQml;
 
 ///
@@ -128,12 +132,12 @@ Q_SIGNALS:
 
 protected:
 
-   LightQtQml*   m_pLightObject;
+   osg::LightQtQml*   m_pLightObject;
    quint16       m_LocalStateSetModes;
 
 };
 
-
+}
 
 
 #endif // LightSourceQtQml_H

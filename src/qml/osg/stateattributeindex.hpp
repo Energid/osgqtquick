@@ -14,6 +14,8 @@
 
 #include <osg/StateAttribute>
 
+namespace osg {
+
 /// \brief Provides an object/API mapping between StateAttributeQtQml and osg::StateAttribute.
 class OSGQTQML_EXPORT StateAttributeQtQml::Index :
    public ObjectQtQml::Index
@@ -31,6 +33,8 @@ public:
       osg::StateAttribute *pObject = 0
       );
 };
+
+}
 
 
 #endif // StateAttributeQtQmlIndex_H

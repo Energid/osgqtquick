@@ -13,6 +13,8 @@
 #include <osgQtQml/Index>
 #include <osg/LightModel>
 
+namespace osg {
+
 //------------------------------------------------------------------------------
 LightModelQtQml::LightModelQtQml
    (
@@ -117,3 +119,4 @@ void LightModelQtQml::setLocalViewer
 
 }
 
+}

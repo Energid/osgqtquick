@@ -10,7 +10,7 @@
 
 #include "lightsource.hpp"
 
-
+namespace osg {
 //------------------------------------------------------------------------------
 LightSourceQtQml::Index::Index
    (
@@ -30,4 +30,6 @@ void LightSourceQtQml::Index::classBegin
       setO(new osg::LightSource);
    }
    GroupQtQml::Index::classBegin();
+}
+
 }

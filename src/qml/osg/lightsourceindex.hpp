@@ -15,6 +15,7 @@
 #include <osg/GroupQtQmlIndex>
 #include <osg/LightSource>
 
+namespace osg {
 ///
 /// \brief Provides an object/API mapping between LightModelQtQml and osg::LightSource.
 ///
@@ -41,5 +42,6 @@ public:
 
 };
 
+}
 
 #endif // LightModelQtQmlIndex_H

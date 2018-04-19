@@ -15,6 +15,7 @@
 #include <QtGui/QVector4D>
 #include <QtGui/QVector3D>
 
+namespace osg {
 ///
 /// \brief The LightQtQml class wraps the Light item/class provided by the
 /// Osg framework.
@@ -419,7 +420,7 @@ Q_SIGNALS:
 
 };
 
-
+}
 
 
 #endif // LightQtQml_H
