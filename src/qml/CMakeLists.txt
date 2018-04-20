@@ -57,6 +57,13 @@ META_Node(osg Camera)
 META_Node(osg Drawable)
 META_Node(osg ShapeDrawable)
 META_Node(osg GraphicsContext)
+META_Node(osg Light)
+META_Node(osg LightModel)
+META_Node(osg LightSource)
+META_Node(osg StateAttribute)
+
+
+
 META_Node(osg Notify) # Custom type
 
 META_Node(osgDB Loader) # Custom type
@@ -99,6 +106,12 @@ set(_hdrs
   osg/drawable.hpp
   osg/shapedrawable.hpp
   osg/graphicscontext.hpp
+  osg/lightindex.hpp
+  osg/lightsourceindex.hpp
+  osg/lightmodelindex.hpp
+  osg/stateattributeindex.hpp
+  osg/osgqtconversion.hpp
+ 
   osgdb/loader.hpp
   osgdb/loaderindex.hpp
   osgga/cameramanipulator.hpp
@@ -121,6 +134,11 @@ list(APPEND _srcs
   osg/shapedrawable.cpp
   osg/graphicscontext.cpp
   osg/module.cpp
+  osg/lightindex.cpp
+  osg/lightsourceindex.cpp
+  osg/lightmodelindex.cpp
+  osg/stateattributeindex.cpp
+  osg/osgqtconversion.cpp
 # osgDB
   osgdb/loader.cpp
   osgdb/module.cpp
