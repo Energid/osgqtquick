@@ -85,7 +85,7 @@ void LightSourceQtQml::setLight
 }
 
 //------------------------------------------------------------------------------
-const quint16 LightSourceQtQml::localStateSetModes
+const int LightSourceQtQml::localStateSetModes
    (
    )const
 {
@@ -95,7 +95,7 @@ const quint16 LightSourceQtQml::localStateSetModes
 //------------------------------------------------------------------------------
 void LightSourceQtQml::setLocalStateSetModes
    (
-   const quint16 mode
+   const int mode
    )
 {
    if(m_LocalStateSetModes == mode)
@@ -107,6 +107,13 @@ void LightSourceQtQml::setLocalStateSetModes
    o(this)->setLocalStateSetModes(mode);
    localStateSetModesChanged(mode);
 
+}
+
+
+//------------------------------------------------------------------------------
+void LightSourceQtQml:: setStateSetModes(StateSetQtQml* stateSet, int mode)
+{
+   o(this)->setStateSetModes(*stateSet->stateSet(), mode);
 }
 
 }

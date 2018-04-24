@@ -20,6 +20,9 @@
 #include "cylinderindex.hpp"
 #include "geodeindex.hpp"
 
+#include "light.hpp"
+#include "lightsource.hpp"
+
 #include <osg/Group>
 
 #include <osgQtQml/Object>
@@ -104,6 +107,14 @@ void registerQtQmlTypes(const char *uri)
     qmlRegisterType<CylinderQtQml>(
                 uri, osgQtQuick_VERSION_MAJOR, osgQtQuick_VERSION_MINOR,
                 "Cylinder");
+
+    qmlRegisterType<LightQtQml>(
+                uri, osgQtQuick_VERSION_MAJOR, osgQtQuick_VERSION_MINOR,
+                "Light");
+
+    qmlRegisterType<LightSourceQtQml>(
+                uri, osgQtQuick_VERSION_MAJOR, osgQtQuick_VERSION_MINOR,
+                "LightSource");
 
     osgQtQml::Index::insertMake(&qtMakeIndex);
     osgQtQml::Index::insertMake(&osgMakeIndex);

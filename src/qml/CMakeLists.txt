@@ -106,11 +106,7 @@ set(_hdrs
   osg/drawable.hpp
   osg/shapedrawable.hpp
   osg/graphicscontext.hpp
-  osg/lightindex.hpp
-  osg/lightsourceindex.hpp
-  osg/lightmodelindex.hpp
-  osg/stateattributeindex.hpp
-  osg/osgqtconversion.hpp
+
  
   osgdb/loader.hpp
   osgdb/loaderindex.hpp
