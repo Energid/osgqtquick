@@ -11,8 +11,10 @@
 
 #include <QtCore/qglobal.h>
 #include <osg/Vec4>
+#include <osg/Vec2d>
 #include <osg/Vec3d>
 #include <QtGui/QColor>
+#include <QtGui/QVector2D>
 #include <QtGui/QVector3D>
 #include <QtGui/QVector4D>
 //#include <boost/numeric/conversion/cast.hpp>
@@ -58,6 +60,19 @@ namespace OsgQtConversion
       )
    {
       return osg::Vec4(vect[0], vect[1], vect[2], vect[3]);
+   }
+
+   ///
+   /// \brief toOsg Converts a vector of QVector4D to equivalent osg vect3d  value
+   /// \param vector QVector4D value.
+   /// \return osg::Vec3d value.
+   ///
+   inline /*OSGQTQML_EXPORT*/ osg::Vec2d toOsg
+      (
+      const QVector2D &vect
+      )
+   {
+      return osg::Vec2d(vect[0], vect[1]);
    }
 
    ///
@@ -108,6 +123,15 @@ namespace OsgQtConversion
       )
    {
       return QVector4D(vect.x(), vect.y(), vect.z(), vect.w());
+   }
+
+   /// \brief Returns a QVector4D by value for given osg::Vec4.
+   inline /*OSGQTQML_EXPORT*/ QVector2D toQt
+      (
+      const osg::Vec2d& vect
+      )
+   {
+      return QVector2D(vect.x(), vect.y());
    }
 }
 
