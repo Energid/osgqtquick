@@ -21,7 +21,6 @@ find_package(OpenSceneGraph 3.0 REQUIRED
   osgManipulator
   osgUtil
   osgViewer
-  osgShadow
   osgText)
 
 # osgQt
