@@ -82,11 +82,6 @@ META_Node(osgManipulator CompositeDragger)
 META_Node(osgManipulator TabPlaneDragger)
 META_Node(osgManipulator TabBoxDragger)
 
-META_Node(osgShadow ShadowedScene)
-META_Node(osgShadow ShadowTechnique)
-META_Node(osgShadow ShadowMap)
-
-
 META_Node(osgText Style)
 META_Node(osgText Font)
 META_Node(osgText FontImplementation)
@@ -115,7 +110,8 @@ set(_hdrs
   osg/lightsourceindex.hpp
   osg/lightmodelindex.hpp
   osg/stateattributeindex.hpp
-  osg/osgqtconversion.hpp 
+  osg/osgqtconversion.hpp
+ 
   osgdb/loader.hpp
   osgdb/loaderindex.hpp
   osgga/cameramanipulator.hpp
@@ -152,14 +148,6 @@ list(APPEND _srcs
   osgga/module.cpp
 # osgManipulator
   osgmanipulator/module.cpp
-#osgShadow
-  osgshadow/shadowedscene.cpp
-  osgshadow/shadowedsceneindex.cpp
-  osgshadow/shadowtechnique.cpp
-  osgshadow/shadowtechniqueindex.cpp
-  osgshadow/shadowmap.cpp
-  osgshadow/shadowmapindex.cpp
-  osgshadow/module.cpp
 # osgText
   osgtext/module.cpp
 # osgViewer
@@ -206,7 +194,6 @@ target_link_libraries(osgQtQml
   ${OSGMANIPULATOR_LIBRARIES}
   ${OSGTEXT_LIBRARIES}
   ${OSGVIEWER_LIBRARIES}
-  ${OSGSHADOW_LIBRARIES}
   ${OSGEARTHUTIL_LIBRARY}
   Qt5::Gui
   Qt5::Qml)
@@ -299,17 +286,6 @@ install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgmanipulator/module.hpp"
   DESTINATION "include/osgManipulator" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgmanipulator/module.hpp"
   DESTINATION "include/osgManipulator" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
-
-file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgShadow/ModuleQtQml"
-  CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp\"\n")
-install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp"
-  DESTINATION "include/osgShadow" RENAME "ModuleQtQml")
-install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp"
-  DESTINATION "include/osgShadow" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
-install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp"
-  DESTINATION "include/osgShadow" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
-install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp"
-  DESTINATION "include/osgShadow" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgText/ModuleQtQml"
