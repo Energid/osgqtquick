@@ -20,6 +20,7 @@
 namespace osg {
 
 class LightQtQml;
+class LightSource;
 
 ///
 /// \brief The LightSourceQtQml class wraps the osg::LightSource item/class provided by the
@@ -70,6 +71,10 @@ public:
       (
       LightSourceQtQml::Index *index,
       QObject *parent = 0
+      );
+
+   osg::LightSource* lightSource
+      (
       );
 
    ///

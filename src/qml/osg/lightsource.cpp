@@ -51,7 +51,13 @@ void LightSourceQtQml::classBegin
    o(this)->setLocalStateSetModes(m_LocalStateSetModes);
 }
 
-
+//------------------------------------------------------------------------------
+osg::LightSource* LightSourceQtQml::lightSource
+   (
+   )
+{
+   return o(this);
+}
 
 //------------------------------------------------------------------------------
 const QVariant LightSourceQtQml::light
