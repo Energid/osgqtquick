@@ -43,7 +43,7 @@ class OSGQTQML_EXPORT LightSourceQtQml :
    /// \property localStateSetModes for the Light Source.
    ///
    /// \details
-   Q_PROPERTY(int localStateSetModes READ localStateSetModes WRITE setLocalStateSetModes NOTIFY localStateSetModesChanged)
+   Q_PROPERTY(unsigned int localStateSetModes READ localStateSetModes WRITE setLocalStateSetModes NOTIFY localStateSetModesChanged)
 
 
 public:
@@ -89,12 +89,12 @@ public:
    /// \brief localStateSetModes Getter for localStateSetModes property
    /// \return  value
    ///
-   const int localStateSetModes
+   const unsigned int localStateSetModes
       (
       ) const;
 
 
-   Q_INVOKABLE void setStateSetModes(StateSetQtQml* stateSet, int mode);
+   Q_INVOKABLE void setStateSetModes(StateSetQtQml* stateSet, unsigned int mode);
 
 
 public Q_SLOTS:
@@ -113,7 +113,7 @@ public Q_SLOTS:
    ///
    void setLocalStateSetModes
       (
-      const int mode
+      const unsigned int mode
       );
 
 
