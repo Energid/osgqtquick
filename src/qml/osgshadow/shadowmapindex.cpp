@@ -5,10 +5,10 @@
 /// @class ShadowMapQtQmlIndex
 //
 //------------------------------------------------------------------------------
-#include "ShadowMapindex.hpp"
+#include "shadowmapindex.hpp"
 #include <osgShadow/ShadowMap>
 
-#include "ShadowMap.hpp"
+#include "shadowmap.hpp"
 
 #include <osgQtQml/Index>
 
