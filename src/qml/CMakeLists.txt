@@ -301,14 +301,14 @@ install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgmanipulator/module.hpp"
   DESTINATION "include/osgManipulator" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/osgShadow/ModuleQtQml"
-  CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp\"\n")
-install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp"
+  CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/osgshadow/module.hpp\"\n")
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgshadow/module.hpp"
   DESTINATION "include/osgShadow" RENAME "ModuleQtQml")
-install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp"
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgshadow/module.hpp"
   DESTINATION "include/osgShadow" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-hdr)
-install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp"
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgshadow/module.hpp"
   DESTINATION "include/osgShadow" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-lib)
-install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgShadow/module.hpp"
+install(FILES "${CMAKE_CURRENT_LIST_DIR}/osgshadow/module.hpp"
   DESTINATION "include/osgShadow" RENAME "ModuleQtQml" COMPONENT ${PROJECT_NAME}-src)
 
 
