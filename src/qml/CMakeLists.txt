@@ -111,11 +111,11 @@ set(_hdrs
   osg/drawable.hpp
   osg/shapedrawable.hpp
   osg/graphicscontext.hpp
-  osg/lightindex.hpp
-  osg/lightsourceindex.hpp
-  osg/lightmodelindex.hpp
-  osg/stateattributeindex.hpp
-  osg/osgqtconversion.hpp 
+  osg/light.hpp
+  osg/lightsource.hpp
+  osg/lightmodel.hpp
+  osg/stateattribute.hpp
+ 
   osgdb/loader.hpp
   osgdb/loaderindex.hpp
   osgga/cameramanipulator.hpp
@@ -138,9 +138,13 @@ list(APPEND _srcs
   osg/shapedrawable.cpp
   osg/graphicscontext.cpp
   osg/module.cpp
+  osg/light.cpp
   osg/lightindex.cpp
+  osg/lightsource.cpp
   osg/lightsourceindex.cpp
+  osg/lightmodel.cpp
   osg/lightmodelindex.cpp
+  osg/stateattribute.cpp
   osg/stateattributeindex.cpp
   osg/osgqtconversion.cpp
 # osgDB
