@@ -31,6 +31,7 @@ void osgQtQml::Object::classBegin()
     }
 
     _is_begin = true;
+    classBeginFinished();
 }
 
 void osgQtQml::Object::componentComplete()
@@ -41,6 +42,7 @@ void osgQtQml::Object::componentComplete()
     }
 
     _is_complete = true;
+    componentCompleted();
 }
 
 osgQtQml::Index *osgQtQml::Object::index()
