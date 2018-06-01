@@ -17,11 +17,6 @@ Index::~Index()
 {
     storage.qtIndexes.erase(q(this));
     storage.osgIndexes.erase(o(this));
-
-    if(storage.osgIndexes.empty() && storage.qtIndexes.empty())
-    {
-        qDebug() << "[osgQtQuick] Index cleared";
-    }
 }
 
 
