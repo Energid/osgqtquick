@@ -110,4 +110,40 @@ CameraQtQml *CameraQtQml::fromCamera(Camera *camera, QObject *parent)
     return result;
 }
 
+const quint32 CameraQtQml::cullMask() const
+{
+   return o(this)->getCullMask();
+}
+
+const quint32 CameraQtQml::nodeMask
+   (
+   ) const
+{
+   return o(this)->getNodeMask();
+}
+
+void CameraQtQml::setCullMask
+   (
+   const quint32 mask
+   )
+{
+   if(cullMask() == mask)
+      return;
+
+   o(this)->setCullMask(mask);
+   cullMaskChanged(mask);
+}
+
+void CameraQtQml::setNodeMask
+   (
+   const quint32 mask
+   )
+{
+   if(nodeMask() == mask)
+      return;
+
+   o(this)->setNodeMask(mask);
+   nodeMaskChanged(mask);
+}
+
 }
