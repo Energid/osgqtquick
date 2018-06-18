@@ -1,8 +1,8 @@
 //------------------------------------------------------------------------------
-// Copyright (c) 2017 Energid Technologies. All rights reserved.
+// Copyright (c) 2017-2018 Energid Technologies. All rights reserved.
 //
-/// @file ecOsgQtConversion.h
-/// @namespace EcOsgQtConversion
+/// @file osgQtConversion.h
+/// @namespace OsgQtConversion
 //
 //------------------------------------------------------------------------------
 #ifndef OSGQTCONVERSION_H
