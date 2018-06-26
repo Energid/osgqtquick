@@ -55,7 +55,7 @@ inline QVector3D qVector3D(const osg::Vec3d& v)
 
 inline QMatrix4x4 matrix(const osg::Matrixd &m)
 {
-    return QMatrix4x4(osg::Matrixf(m).ptr());
+    return QMatrix4x4(osg::Matrixf(m).ptr(), 4, 4);
 }
 
 inline osg::Matrixd matrix(const QMatrix4x4 &m)
