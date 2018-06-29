@@ -1,23 +1,27 @@
 //------------------------------------------------------------------------------
-// Copyright (c) 2017 Energid Technologies. All rights reserved.
+// Copyright (c) 2017-2018 Energid Technologies. All rights reserved.
 //
-/// @file ecOsgQtConversion.h
-/// @namespace EcOsgQtConversion
+/// @file osgQtConversion.h
+/// @namespace OsgQtConversion
 //
 //------------------------------------------------------------------------------
 #ifndef OSGQTCONVERSION_H
 #define OSGQTCONVERSION_H
 
+#include <osgQtQml/Export>
 
-#include <QtCore/qglobal.h>
-#include <osg/Vec4>
-#include <osg/Vec2d>
-#include <osg/Vec3d>
 #include <QtGui/QColor>
 #include <QtGui/QVector2D>
 #include <QtGui/QVector3D>
 #include <QtGui/QVector4D>
-//#include <boost/numeric/conversion/cast.hpp>
+#include <QtGui/QMatrix4x4>
+#include <QtGui/QQuaternion>
+
+#include <osg/Vec4>
+#include <osg/Vec2>
+#include <osg/Vec3>
+#include <osg/Matrix>
+#include <osg/Quat>
 
 /// \brief Provides functions to convert between Qt and OSG data types.
 /// \ingroup Ec_Qml_OsgCore
@@ -28,7 +32,7 @@ namespace OsgQtConversion
    /// \param color QColor
    /// \return Color as osg::Vec4.
    ///
-   inline /*OSGQTQML_EXPORT*/ const osg::Vec4 toOsg
+   inline OSGQTQML_EXPORT const osg::Vec4 toOsg
       (
       const QColor& color
       )
@@ -41,7 +45,7 @@ namespace OsgQtConversion
    /// \param color osg::Vec4 value representing the color.
    /// \return QColor value.
    ///
-   inline /*OSGQTQML_EXPORT*/ const QColor toQColor
+   inline OSGQTQML_EXPORT const QColor toQColor
       (
       const osg::Vec4& color
       )
@@ -54,7 +58,7 @@ namespace OsgQtConversion
    /// \param vector QVector4D value.
    /// \return osg::Vec3d value.
    ///
-   inline /*OSGQTQML_EXPORT*/ osg::Vec4 toOsg
+   inline OSGQTQML_EXPORT osg::Vec4 toOsg
       (
       const QVector4D &vect
       )
@@ -62,62 +66,8 @@ namespace OsgQtConversion
       return osg::Vec4(vect[0], vect[1], vect[2], vect[3]);
    }
 
-   ///
-   /// \brief toOsg Converts a vector of QVector4D to equivalent osg vect3d  value
-   /// \param vector QVector4D value.
-   /// \return osg::Vec3d value.
-   ///
-   inline /*OSGQTQML_EXPORT*/ osg::Vec2d toOsg
-      (
-      const QVector2D &vect
-      )
-   {
-      return osg::Vec2d(vect[0], vect[1]);
-   }
-
-   ///
-   /// \brief toOsg Converts a vector of QVector3D to equivalent osg vect3d  value
-   /// \param vector QVector3D value.
-   /// \return osg::Vec3d value.
-   ///
-   inline /*OSGQTQML_EXPORT*/ osg::Vec3f toOsg
-      (
-      const QVector3D &vect
-      )
-   {
-      return osg::Vec3f(vect[0], vect[1], vect[2]);
-   }
-
-   ///
-   /// \brief QVector3D Converts a vector of osg::Vec3d to equivalent QVector3D  value
-   /// \param vector osg::Vec3f value.
-   /// \return QVector3D value.
-   ///
-   inline /*OSGQTQML_EXPORT*/ QVector3D toQt
-      (
-      const osg::Vec3f &vect
-      )
-   {
-      return QVector3D(vect[0], vect[1], vect[2]);
-   }
-
-   ///
-   /// \brief QVector3D Converts a vector of osg::Vec3d to equivalent QVector3D  value
-   /// \param vector osg::Vec3d value.
-   /// \return QVector3D value.
-   ///
-   inline /*OSGQTQML_EXPORT*/ QVector3D toQt
-      (
-      const osg::Vec3d &vect
-      )
-   {
-      //return QVector3D(boost::numeric_cast<float>(vect[0]), boost::numeric_cast<float>(vect[1]), boost::numeric_cast<float>(vect[2]));
-
-       return QVector3D((vect[0]), (vect[1]), (vect[2]));
-   }
-
    /// \brief Returns a QVector4D by value for given osg::Vec4.
-   inline /*OSGQTQML_EXPORT*/ QVector4D toQt
+   inline OSGQTQML_EXPORT QVector4D toQt
       (
       const osg::Vec4& vect
       )
@@ -125,13 +75,102 @@ namespace OsgQtConversion
       return QVector4D(vect.x(), vect.y(), vect.z(), vect.w());
    }
 
-   /// \brief Returns a QVector4D by value for given osg::Vec4.
-   inline /*OSGQTQML_EXPORT*/ QVector2D toQt
+   ///
+   /// \brief toOsg Converts a vector of QVector4D to equivalent osg vect3d  value
+   /// \param vector QVector4D value.
+   /// \return osg::Vec3d value.
+   ///
+   inline OSGQTQML_EXPORT osg::Vec2 toOsg
       (
-      const osg::Vec2d& vect
+      const QVector2D &vect
+      )
+   {
+      return osg::Vec2(vect[0], vect[1]);
+   }
+
+   /// \brief Returns a QVector4D by value for given osg::Vec4.
+   inline OSGQTQML_EXPORT QVector2D toQt
+      (
+      const osg::Vec2& vect
       )
    {
       return QVector2D(vect.x(), vect.y());
+   }
+
+   ///
+   /// \brief toOsg Converts a vector of QVector3D to equivalent osg vect3d  value
+   /// \param vector QVector3D value.
+   /// \return osg::Vec3d value.
+   ///
+   inline OSGQTQML_EXPORT osg::Vec3 toOsg
+      (
+      const QVector3D &vect
+      )
+   {
+      return osg::Vec3(vect[0], vect[1], vect[2]);
+   }
+
+   ///
+   /// \brief QVector3D Converts a vector of osg::Vec3 to equivalent QVector3D  value
+   /// \param vector osg::Vec3 value.
+   /// \return QVector3D value.
+   ///
+   inline OSGQTQML_EXPORT QVector3D toQt
+      (
+      const osg::Vec3 &vect
+      )
+   {
+      return QVector3D(vect[0], vect[1], vect[2]);
+   }
+
+   ///
+   /// \brief toOsg Converts a matrix4*4 of QMatrix4x4 to equivalent osg osg::Matrix  value
+   /// \param vector QMatrix4x4 value.
+   /// \return osg::Matrix value.
+   ///
+   inline OSGQTQML_EXPORT osg::Matrix toOsg
+      (
+      const QMatrix4x4 &mat
+      )
+   {
+      return osg::Matrix(mat(0,0), mat(1,0), mat(2,0), mat(3,0),
+                         mat(0,1), mat(1,1), mat(2,1), mat(3,1),
+                         mat(0,2), mat(1,2), mat(2,2), mat(3,2),
+                         mat(0,3), mat(1,3), mat(2,3), mat(3,3));
+   }
+
+   /// \brief Returns a QMatrix4x4 by value for given osg::Matrix.
+   inline OSGQTQML_EXPORT QMatrix4x4 toQt
+      (
+      const osg::Matrix& osgMat
+      )
+   {
+      return QMatrix4x4(osgMat(0,0), osgMat(1,0), osgMat(2,0), osgMat(3,0),
+                        osgMat(0,1), osgMat(1,1), osgMat(2,1), osgMat(3,1),
+                        osgMat(0,2), osgMat(1,2), osgMat(2,2), osgMat(3,2),
+                        osgMat(0,3), osgMat(1,3), osgMat(2,3), osgMat(3,3));
+   }
+
+   ///
+   /// \brief toOsg Converts a Quaternion of QQuaternion to equivalent  osg::Quat  value
+   /// \param vector QQuaternion value.
+   /// \return osg::Quat value.
+   ///
+   inline OSGQTQML_EXPORT osg::Quat toOsg
+      (
+      const QQuaternion &quatValue
+      )
+   {
+      return osg::Quat(quatValue.x(), quatValue.y(), quatValue.z(), quatValue.scalar());
+   }
+
+   /// \brief Returns a QQuaternion by value for given osg::Quat.
+   inline OSGQTQML_EXPORT QQuaternion toQt
+      (
+      const osg::Quat& osgQuatVal
+      )
+   {
+      return QQuaternion(osgQuatVal.w(), osgQuatVal.x(), osgQuatVal.y(), osgQuatVal.z());
    }
 }
 

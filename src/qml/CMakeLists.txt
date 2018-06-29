@@ -11,6 +11,25 @@ endif()
 set(_srcs)
 set(_moc_hdrs)
 
+macro(SRC_Node _library _class)
+   string(TOLOWER ${_library} _library_l)
+   string(TOLOWER ${_class} _class_l)
+   file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/include/${_library}")
+   file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/include/${_library}/${_class}"
+     CONTENT "#include \"${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp\"\n")
+   install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+     DESTINATION "include/${_library}" RENAME "${_class}")
+   install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+     DESTINATION "include/${_library}" RENAME "${_class}" COMPONENT ${PROJECT_NAME}-hdr)
+   install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+     DESTINATION "include/${_library}" RENAME "${_class}" COMPONENT ${PROJECT_NAME}-lib)
+   install(FILES "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp"
+     DESTINATION "include/${_library}" RENAME "${_class}" COMPONENT ${PROJECT_NAME}-src)
+  list(APPEND _srcs "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.cpp")
+  list(APPEND _moc_hdrs "${CMAKE_CURRENT_LIST_DIR}/${_library_l}/${_class_l}.hpp")
+endmacro(SRC_Node)
+
+
 # Meta node
 macro(META_Node _library _class)
   string(TOLOWER ${_library} _library_l)
@@ -99,6 +118,8 @@ endif()
 
 META_Node(osgViewer CompositeViewer)
 
+SRC_Node(osg OsgQtConversion)
+
 set(_hdrs
   object.hpp
   osg/object.hpp
@@ -115,7 +136,7 @@ set(_hdrs
   osg/lightsource.hpp
   osg/lightmodel.hpp
   osg/stateattribute.hpp
- 
+
   osgdb/loader.hpp
   osgdb/loaderindex.hpp
   osgga/cameramanipulator.hpp
@@ -146,7 +167,6 @@ list(APPEND _srcs
   osg/lightmodelindex.cpp
   osg/stateattribute.cpp
   osg/stateattributeindex.cpp
-  osg/osgqtconversion.cpp
 # osgDB
   osgdb/loader.cpp
   osgdb/module.cpp

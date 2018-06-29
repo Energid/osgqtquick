@@ -25,6 +25,10 @@ public:
   bool isBegin() const;
   bool isComplete() const;
 
+Q_SIGNALS:
+  void classBeginFinished();
+  void componentCompleted();
+
 protected:
   Object(Index *_i_ptr, QObject *parent = 0);
 
