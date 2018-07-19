@@ -140,7 +140,7 @@ Q_SIGNALS:
 protected:
 
    osg::LightQtQml*   m_pLightObject;
-   int       m_LocalStateSetModes;
+   unsigned int       m_LocalStateSetModes;
 
 };
 

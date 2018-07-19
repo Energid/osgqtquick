@@ -43,14 +43,15 @@ ViewQtQuick::Index::PostDraw::PostDraw(Index *i) : i(i) {
 
 void ViewQtQuick::Index::PostDraw::operator ()(osg::RenderInfo &/*renderInfo*/) const
 {
-    if (i->renderFbo) {
-        if(i->window->renderLoopType() == osgQtQuick::ThreadedRenderLoop) {
-            i->window->renderThread()->context->functions()->glFlush();
-        }
-        i->renderFbo->bindDefault();
-        qSwap(i->renderFbo, i->displayFbo);
-        qSwap(i->renderTexture, i->displayTexture);
+    if (!i->renderFbo) {
+       return;
     }
+    if(i->window->renderLoopType() == osgQtQuick::ThreadedRenderLoop) {
+        i->window->renderThread()->context->functions()->glFlush();
+    }
+    i->renderFbo->bindDefault();
+    qSwap(i->renderFbo, i->displayFbo);
+    qSwap(i->renderTexture, i->displayTexture);
 }
 
 /* ---------------------------------------------------------- class Index --- */
