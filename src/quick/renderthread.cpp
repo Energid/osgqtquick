@@ -20,7 +20,7 @@ void RenderThread::renderNext()
 
     context->makeCurrent(surface);
 
-    window->frame();
+    window->frame(); // simply calls viewer->frame() in case of multi-threaded rendering
 
     QDateTime endFrameTime = QDateTime::currentDateTime();
     unsigned long frameTime = static_cast<unsigned long>(_latestEndFrameTime.msecsTo(endFrameTime));

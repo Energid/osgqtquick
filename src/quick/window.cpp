@@ -169,6 +169,7 @@ Window *Window::fromWindow(QQuickWindow *window)
 void Window::frame()
 {
     if(d.renderLoopType != ThreadedRenderLoop) {
+        // Single threaded Qt rendering
         { // Qt bug!?
             QOpenGLContext::currentContext()->functions()->glUseProgram(0);
         }
@@ -176,6 +177,7 @@ void Window::frame()
         d.newTexture = true;
         prepareNodes();
     } else {
+        // Multi threaded Qt rendering
         d.viewer->frame();
     }
 }
@@ -229,6 +231,7 @@ void Window::newTexture()
 
 void Window::onSceneGraphAboutToStop()
 {
+   // Kill frametimer if it exists (only if single threaded Qt render loop)
     if(d.frameTimer != -1) {
         killTimer(d.frameTimer);
         d.frameTimer = -1;
@@ -248,6 +251,8 @@ bool Window::eventFilter(QObject *watched, QEvent *event)
 
 void Window::timerEvent(QTimerEvent *event)
 {
+   // Timer is started only for single-threaded Qt render loop. So, this code doesn't execute inc ase of multi-threaded
+   // Qt rendering.
     if (event->timerId() == d.frameTimer) {
         frame();
     }
