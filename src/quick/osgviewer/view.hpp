@@ -6,6 +6,10 @@
 #include <osg/CameraQtQml>
 #include <osgGA/CameraManipulatorQtQml>
 
+namespace osg {
+   class Operation;
+}
+
 namespace osgViewer {
 
 class View;
@@ -29,6 +33,8 @@ public:
 
   Q_INVOKABLE osgGA::CameraManipulatorQtQml* getCameraManipulator();
   Q_INVOKABLE void setCameraManipulator(osgGA::CameraManipulatorQtQml *manipulator);
+
+  void addUpdateOperation(osg::Operation* pOperation);
 
   ViewQtQuick(QQuickItem *parent = 0);
   ViewQtQuick(Index *index, QQuickItem *parent = 0);

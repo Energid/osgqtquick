@@ -7,6 +7,7 @@
 
 #include <osgViewer/View>
 
+#include <osg/OperationThread>
 #include <osgViewer/ViewerEventHandlers>
 #include <osgGA/TrackballManipulator>
 
@@ -453,7 +454,17 @@ osgGA::CameraManipulatorQtQml *ViewQtQuick::getCameraManipulator()
 
 void ViewQtQuick::setCameraManipulator(osgGA::CameraManipulatorQtQml *manipulator)
 {
-    i(this)->setCameraManipulator(manipulator);
+   i(this)->setCameraManipulator(manipulator);
+}
+
+void ViewQtQuick::addUpdateOperation(osg::Operation* pOperation)
+{
+   Index* pIndex = i(this);
+   if(!pIndex || !pIndex->window || !pIndex->window->viewer())
+   {
+      return;
+   }
+   i(this)->window->viewer()->addUpdateOperation(pOperation);
 }
 
 ViewQtQuick::ViewQtQuick(QQuickItem *parent) :
