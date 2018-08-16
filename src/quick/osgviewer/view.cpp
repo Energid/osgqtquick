@@ -380,6 +380,7 @@ QSGNode *ViewQtQuick::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintN
     if (renderThread) {
         if(!renderThread->context) {
             QOpenGLContext *current = window()->openglContext();
+            QSurface* pSurface = current->surface();
             current->doneCurrent();
 
             renderThread->context = new QOpenGLContext();
@@ -388,7 +389,7 @@ QSGNode *ViewQtQuick::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintN
             renderThread->context->create();
             renderThread->context->moveToThread(renderThread);
 
-            current->makeCurrent(window());
+            current->makeCurrent(pSurface);
 
             QMetaObject::invokeMethod(i(this)->window, "ready");
             return 0;
