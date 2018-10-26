@@ -18,7 +18,7 @@ public:
   StateSetQtQml(QObject *parent = 0);
   StateSetQtQml(Index *index, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE void setGlobalDefaults();
 

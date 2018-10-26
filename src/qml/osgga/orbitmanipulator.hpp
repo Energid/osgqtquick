@@ -19,7 +19,7 @@ public:
   OrbitManipulatorQtQml(QObject *parent = 0);
   OrbitManipulatorQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   qreal getWheelZoomFactor() const;
   void setWheelZoomFactor(qreal wheelZoomFactor);

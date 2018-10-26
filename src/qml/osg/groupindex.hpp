@@ -19,7 +19,7 @@ public:
     Index(Group *o = 0);
     ~Index();
 
-    void classBegin();
+    void classBegin() override;
 
 protected:
     struct CompleteInfo;

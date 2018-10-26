@@ -26,7 +26,7 @@ public:
   CameraQtQml(QObject *parent = 0);
   CameraQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE QColor getClearColor() const;
   Q_INVOKABLE void setClearColor(const QColor &color);

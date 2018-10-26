@@ -19,7 +19,7 @@ public:
 public:
     Index(Transform *o = 0);
 
-    void classBegin();
+    void classBegin() override;
 };
 
 }

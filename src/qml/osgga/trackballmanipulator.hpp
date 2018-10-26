@@ -17,7 +17,7 @@ public:
   TrackballManipulatorQtQml(QObject *parent = 0);
   TrackballManipulatorQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   TrackballManipulator* trackballManipulator();
 

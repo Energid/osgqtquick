@@ -17,7 +17,7 @@ public:
 public:
     Index(TrackballManipulator *o = 0);
 
-    void classBegin();
+    void classBegin() override;
 };
 
 }

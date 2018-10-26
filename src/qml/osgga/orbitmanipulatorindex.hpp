@@ -17,7 +17,7 @@ public:
 public:
     Index(OrbitManipulator *o = 0);
 
-    void classBegin();
+    void classBegin() override;
 };
 
 }

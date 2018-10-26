@@ -17,8 +17,8 @@ public:
   Object(QObject *parent = 0);
   ~Object();
 
-  void classBegin();
-  void componentComplete();
+  void classBegin() override;
+  void componentComplete() override;
 
   Index* index();
 

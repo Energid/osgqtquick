@@ -17,7 +17,7 @@ public:
   NodeQtQml(QObject *parent = 0);
   NodeQtQml(Index *index, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE osg::StateSetQtQml* getOrCreateStateSet();
 

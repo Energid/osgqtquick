@@ -22,7 +22,7 @@ public:
   DraggerQtQml(QObject *parent = 0);
   DraggerQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE bool getHandleEvents() const;
   Q_INVOKABLE void setHandleEvents(bool handleEvents);

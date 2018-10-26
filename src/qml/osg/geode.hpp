@@ -25,8 +25,8 @@ public:
   GeodeQtQml(QObject *parent = 0);
   GeodeQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
-  void componentComplete();
+  void classBegin() override;
+  void componentComplete() override;
 
   Q_INVOKABLE bool addDrawable(DrawableQtQml *drawable);
   Q_INVOKABLE bool removeDrawable(DrawableQtQml *drawable);
