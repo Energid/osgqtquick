@@ -14,7 +14,7 @@ endif(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
 # functions override to satisfy the warnings
 # -TRR '18/10
 set(OSGQTQUICK_ORIG_FLAGS ${CMAKE_CXX_FLAGS})
-string(REGEX REPLACE "-Wsuggest-override" " " CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
+string(REGEX REPLACE "-Wsuggest-override" " " CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 ## in the legacy build system (i.e. as of Oct 2018), this variable is used
 ## by the cmake macro ecExternIncludeDirs to effectively mark the dir
