@@ -21,7 +21,7 @@ public:
   MatrixTransformQtQml(QObject *parent = 0);
   MatrixTransformQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE QMatrix4x4 getMatrix() const;
   Q_INVOKABLE void setMatrix(const QMatrix4x4 &mat);

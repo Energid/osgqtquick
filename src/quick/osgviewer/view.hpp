@@ -39,7 +39,7 @@ public:
   ViewQtQuick(QQuickItem *parent = 0);
   ViewQtQuick(Index *index, QQuickItem *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   static ViewQtQuick* fromView(View *view, QQuickItem *parent = 0);
 
@@ -49,21 +49,21 @@ Q_SIGNALS:
   void cameraManipulatorChanged(osgGA::CameraManipulatorQtQml *manipulator);
 
 protected:
-  void mousePressEvent(QMouseEvent *event);
-  void mouseMoveEvent(QMouseEvent *event);
-  void mouseReleaseEvent(QMouseEvent *event);
-  void mouseDoubleClickEvent(QMouseEvent *event);
-  void wheelEvent(QWheelEvent *event);
+  void mousePressEvent(QMouseEvent *event) override;
+  void mouseMoveEvent(QMouseEvent *event) override;
+  void mouseReleaseEvent(QMouseEvent *event) override;
+  void mouseDoubleClickEvent(QMouseEvent *event) override;
+  void wheelEvent(QWheelEvent *event) override;
 
-  void keyPressEvent(QKeyEvent *event);
-  void keyReleaseEvent(QKeyEvent *event);
+  void keyPressEvent(QKeyEvent *event) override;
+  void keyReleaseEvent(QKeyEvent *event) override;
 
-  void geometryChanged(const QRectF & newGeometry, const QRectF & oldGeometry);
+  void geometryChanged(const QRectF & newGeometry, const QRectF & oldGeometry) override;
 
   QSGNode* updatePaintNode(QSGNode *oldNode,
-                           QQuickItem::UpdatePaintNodeData *updatePaintNodeData);
+                           QQuickItem::UpdatePaintNodeData *updatePaintNodeData) override;
 
-  void itemChange(ItemChange change, const ItemChangeData & value);
+  void itemChange(ItemChange change, const ItemChangeData & value) override;
 };
 
 }

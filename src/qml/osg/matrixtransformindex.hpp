@@ -17,7 +17,7 @@ public:
 public:
     Index(MatrixTransform *transform = 0);
 
-    void classBegin();
+    void classBegin() override;
 };
 
 }

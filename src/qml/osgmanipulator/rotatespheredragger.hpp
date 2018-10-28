@@ -22,7 +22,7 @@ public:
   RotateSphereDraggerQtQml(QObject *parent = 0);
   RotateSphereDraggerQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE QColor getColor() const;
   Q_INVOKABLE void setColor(const QColor &color);

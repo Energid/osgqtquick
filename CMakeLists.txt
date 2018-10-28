@@ -7,6 +7,22 @@ else(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
    cmake_minimum_required(VERSION 2.8)
 endif(";${EC_REPOSITORIES};" MATCHES ";osgqtquick;")
 
+# suppress warnings about missing 'override' keywords
+# NOTE: this only works while building this repo. Other repos including headers
+# from here still may get warnings. Ideally this repo would be included as a 
+# system dir but I can't get that to always works for me so I've marked some
+# functions override to satisfy the warnings
+# -TRR '18/10
+set(OSGQTQUICK_ORIG_FLAGS ${CMAKE_CXX_FLAGS})
+string(REGEX REPLACE "-Wsuggest-override" " " CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+
+## in the legacy build system (i.e. as of Oct 2018), this variable is used
+## by the cmake macro ecExternIncludeDirs to effectively mark the dir
+## as "system" which will suppress warnings
+##get_filename_component(CUR_DIR_ABS "${CMAKE_CURRENT_LIST_DIR}" ABSOLUTE)
+##set(EC_EXT_osgqtquick_INC_DIR "${CUR_DIR_ABS}/src" CACHE STRING "" FORCE)
+#set(EC_EXT_osgqtquick_INC_DIR "${CMAKE_BINARY_DIR}/osg" CACHE STRING "" FORCE)
+
 project(osgQtQuick CXX)
 
 set(osgQtQuick_VERSION_MAJOR 2)
@@ -97,3 +113,5 @@ add_subdirectory(src)
 if(osgQtQuick_BUILD_DOCS)
   add_subdirectory(doc)
 endif()
+
+set(${CMAKE_CXX_FLAGS} OSGQTQUICK_ORIG_FLAGS)

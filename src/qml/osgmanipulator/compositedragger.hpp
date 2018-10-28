@@ -24,7 +24,7 @@ public:
   CompositeDraggerQtQml(QObject *parent = 0);
   CompositeDraggerQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE bool addDragger(DraggerQtQml *dragger);
   Q_INVOKABLE bool removeDragger(DraggerQtQml *dragger);

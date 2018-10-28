@@ -19,7 +19,7 @@ public:
   ObjectQtQml(QObject *parent = 0);
   ObjectQtQml(Index *index, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE QString getName() const;
   Q_INVOKABLE void setName(const QString &name);

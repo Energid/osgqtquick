@@ -21,7 +21,7 @@ public:
   StandardManipulatorQtQml(QObject *parent = 0);
   StandardManipulatorQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE osg::NodeQtQml *getNode();
   Q_INVOKABLE void setNode(osg::NodeQtQml *node);

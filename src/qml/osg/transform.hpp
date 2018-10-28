@@ -17,7 +17,7 @@ public:
   TransformQtQml(QObject *parent = 0);
   TransformQtQml(Index *, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Transform* transform();
 

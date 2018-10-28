@@ -17,7 +17,7 @@ public:
   DrawableQtQml(QObject *parent = 0);
   DrawableQtQml(Index *index, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Drawable* drawable();
 

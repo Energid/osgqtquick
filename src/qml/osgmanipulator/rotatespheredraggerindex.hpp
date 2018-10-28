@@ -17,7 +17,7 @@ public:
 public:
     Index(RotateSphereDragger *dragger = 0);
 
-    void classBegin();
+    void classBegin() override;
 };
 
 }

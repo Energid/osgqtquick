@@ -16,7 +16,7 @@ public:
 
 public:
     Index(Node *o = 0);
-    void classBegin();
+    void classBegin() override;
 };
 
 }

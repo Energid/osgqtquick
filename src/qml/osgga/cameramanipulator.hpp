@@ -19,7 +19,7 @@ public:
   CameraManipulatorQtQml(QObject *parent = 0);
   CameraManipulatorQtQml(Index *index, QObject *parent = 0);
 
-  void classBegin();
+  void classBegin() override;
 
   Q_INVOKABLE void setHomePosition(const QVector3D &eye,
                                    const QVector3D &center,
